@@ -12,7 +12,7 @@ class LoginForms(forms.Form):
             }
         )
     )
-    senha=forms.CharField(
+    senha_login=forms.CharField(
         label='Senha',
         required=True,
         max_length=70,
