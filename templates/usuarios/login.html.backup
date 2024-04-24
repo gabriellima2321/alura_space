@@ -1,0 +1,27 @@
+{% extends 'usuarios/base.html'%}
+{% load static%}
+{% block content%}
+    <section class="conteudo">
+        <div class="container">
+            <div class="login-box">
+                <h2 class="cards__titulo" >Login</h2>
+                <form class="menu-lateral" action="#" method="post">
+                    <div class="cabecalho__busca">
+                    <div class="busca__fundo">
+                        <input class="busca__input" type="text" name="username" placeholder="Nome de usuário" required>
+                    </div>
+                    </div>
+                    <div class="cabecalho__busca">
+                    <div class="busca__fundo">
+                        <input class="busca__input" type="password" name="password" placeholder="Senha" required>
+                    </div>
+                    </div>
+                    <input type="submit" value="Entrar">
+                </form>
+                <p  class="imagem__titulo" >Ainda não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+{% endblock %}

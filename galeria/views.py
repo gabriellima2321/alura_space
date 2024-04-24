@@ -1,10 +1,15 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from galeria.models import Fotografia 
+from django.contrib.auth.models import User
+from django.contrib import auth,messages
 
 def index(request):
-    fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True)
-    return render(request, 'galeria/index.html', {"cards": fotografias})
+    if request.user.is_authenticated:
+        fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True)
+        return render(request, 'galeria/index.html', {"cards": fotografias})
+    else:
+        return redirect('login')
 
 
 def imagem(request,foto_id):
@@ -12,6 +17,9 @@ def imagem(request,foto_id):
     return render(request, 'galeria/imagem.html', {"fotografia": fotografia})
 
 def buscar(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     fotografias = Fotografia.objects.order_by("data_fotografia").filter(publicada=True)
     if 'buscar' in request.GET:
         nome_a_buscar = request.GET['buscar']
