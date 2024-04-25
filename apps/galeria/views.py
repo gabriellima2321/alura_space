@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
-from galeria.models import Fotografia 
+from apps.galeria.models import Fotografia 
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
 
